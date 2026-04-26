@@ -1,0 +1,60 @@
+steps:
+  # Run tests
+  - name: python:3.11-slim
+    id: test
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        pip install -r requirements.txt --quiet
+        pytest tests/ -v --tb=short
+    env:
+      - GCP_PROJECT_ID=${PROJECT_ID}
+      - VERTEX_ENDPOINT_ID=test-endpoint
+      - API_KEY=test-key
+
+  # Build Docker image
+  - name: gcr.io/cloud-builders/docker
+    id: build
+    args:
+      - build
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/pof-ai-backend:${SHORT_SHA}
+      - -t
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/pof-ai-backend:latest
+      - .
+    waitFor: [test]
+
+  # Push image to Artifact Registry
+  - name: gcr.io/cloud-builders/docker
+    id: push
+    args:
+      - push
+      - --all-tags
+      - ${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/pof-ai-backend
+    waitFor: [build]
+
+  # Deploy to Cloud Run
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    id: deploy
+    entrypoint: gcloud
+    args:
+      - run
+      - deploy
+      - pof-ai-backend
+      - --image=${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO}/pof-ai-backend:${SHORT_SHA}
+      - --region=${_REGION}
+      - --platform=managed
+      - --no-allow-unauthenticated
+      - --memory=2Gi
+      - --cpu=2
+      - --concurrency=80
+      - --set-env-vars=GCP_PROJECT_ID=${PROJECT_ID},GCP_REGION=${_REGION}
+    waitFor: [push]
+
+substitutions:
+  _REGION: us-central1
+  _REPO: pof-ai-repo
+
+options:
+  logging: CLOUD_LOGGING_ONLY

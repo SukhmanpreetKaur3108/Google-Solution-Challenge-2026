@@ -1,0 +1,58 @@
+# ── Python 3.14 note ────────────────────────────────────────────────────────
+# Some scientific packages (fairlearn, xgboost) have no Python 3.14 wheels yet.
+# Install with: pip install -r requirements.txt
+# Then separately: pip install --pre xgboost
+#                  pip install git+https://github.com/fairlearn/fairlearn.git
+# Docker/Cloud Run uses python:3.11-slim which has full wheel support.
+# ─────────────────────────────────────────────────────────────────────────────
+
+fastapi>=0.111.0
+uvicorn[standard]>=0.29.0
+pydantic>=2.7.0
+pydantic-settings>=2.2.0
+
+# Google Cloud (loosened pins for Python 3.14 compatibility)
+google-cloud-aiplatform>=1.52.0
+google-cloud-firestore>=2.16.0
+google-cloud-bigquery>=3.21.0
+google-cloud-kms>=2.21.0
+google-cloud-storage>=2.16.0
+google-cloud-logging>=3.10.0
+google-cloud-secret-manager>=2.20.0
+
+# Gemini / Vertex generative AI
+# google-generativeai is deprecated — use google-genai (new SDK)
+google-genai>=1.0.0
+vertexai>=1.60.0
+
+# Fairness / ML
+# NOTE: fairlearn, xgboost, dowhy may need --pre or source build on Python 3.14
+# Use Python 3.11 in production / Docker (see Dockerfile)
+fairlearn>=0.10.0
+scikit-learn>=1.4.0
+xgboost>=2.0.0
+pandas>=2.2.0
+numpy>=1.26.0
+# dowhy requires networkx and may need source build on Py 3.14 — install separately if needed
+# dowhy>=0.11.0
+networkx>=3.3
+
+# Certificate utilities
+cryptography>=42.0.0
+qrcode[pil]>=7.4.2
+Pillow>=10.3.0
+python-jose[cryptography]>=3.3.0
+crcmod>=1.7
+
+# Async / HTTP
+httpx>=0.27.0
+aiofiles>=23.2.0
+
+# Misc
+python-dotenv>=1.0.0
+pyyaml>=6.0.0
+
+# Testing
+pytest>=8.2.0
+pytest-asyncio>=0.23.6
+pytest-mock>=3.14.0

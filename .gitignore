@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+*.egg-info/
+dist/
+build/
+.env
+*.env
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets — NEVER commit these
+*.key
+*.pem
+service-account*.json
+credentials*.json

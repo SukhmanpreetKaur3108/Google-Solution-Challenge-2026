@@ -1,0 +1,117 @@
+# PoF-AI Regulatory Knowledge Base
+# Each entry: clause_id, obligation, metric_required, threshold, jurisdiction
+
+eu_ai_act.art_10:
+  obligation: >
+    High-risk AI systems shall use training data that is relevant, representative,
+    free of errors and complete with regard to the intended purpose.
+    Data governance practices must address biases.
+  metric: statistical_score
+  threshold: 0.85
+  operator: gte
+  jurisdiction: EU
+
+eu_ai_act.art_13:
+  obligation: >
+    High-risk AI systems shall be designed and developed to ensure their operation
+    is sufficiently transparent for users to interpret the output and use it appropriately.
+  metric: adversarial_flip_rate
+  threshold: 0.2
+  operator: lte
+  jurisdiction: EU
+
+eu_ai_act.art_14:
+  obligation: >
+    High-risk AI systems shall be designed and developed with human oversight measures
+    that enable natural persons to oversee the functioning of the system.
+  metric: regulatory_compliance_percent
+  threshold: 70.0
+  operator: gte
+  jurisdiction: EU
+
+eu_ai_act.art_15:
+  obligation: >
+    High-risk AI systems shall be designed and developed to achieve an appropriate
+    level of accuracy, robustness and cybersecurity, and to perform consistently
+    throughout their lifecycle.
+  metric: causal_counterfactual_score
+  threshold: 0.80
+  operator: gte
+  jurisdiction: EU
+
+gdpr.art_22:
+  obligation: >
+    The data subject shall have the right not to be subject to a decision based
+    solely on automated processing, including profiling, which produces legal effects
+    concerning him or her or similarly significantly affects him or her.
+  metric: adversarial_flip_rate
+  threshold: 0.15
+  operator: lte
+  jurisdiction: EU
+
+gdpr.art_5_fairness:
+  obligation: >
+    Personal data shall be processed lawfully, fairly and in a transparent manner
+    in relation to the data subject.
+  metric: statistical_score
+  threshold: 0.80
+  operator: gte
+  jurisdiction: EU
+
+nist_ai_rmf.govern_1_1:
+  obligation: >
+    Policies, processes, procedures, and practices across the organization related
+    to the mapping, measuring, and managing of AI risks are in place, transparent,
+    and implemented effectively.
+  metric: regulatory_compliance_percent
+  threshold: 75.0
+  operator: gte
+  jurisdiction: US
+
+nist_ai_rmf.govern_1_4:
+  obligation: >
+    Organizational teams are committed to a culture that considers and communicates
+    AI risk. Provide internal and external stakeholders with timely and actionable
+    information for managing AI risks.
+  metric: statistical_score
+  threshold: 0.75
+  operator: gte
+  jurisdiction: US
+
+nist_ai_rmf.map_1_5:
+  obligation: >
+    Organizational risk tolerances are determined and documented. AI system risk
+    tolerances are defined in context with organizational risk tolerances.
+  metric: causal_counterfactual_score
+  threshold: 0.75
+  operator: gte
+  jurisdiction: US
+
+nist_ai_rmf.measure_2_5:
+  obligation: >
+    AI system to be deployed in a real-world context is demonstrated to be valid
+    and reliable through sound technical and sociotechnical evaluations.
+  metric: adversarial_flip_rate
+  threshold: 0.25
+  operator: lte
+  jurisdiction: US
+
+india_dpdp.sec_4:
+  obligation: >
+    Personal data shall be processed only for a lawful purpose for which the data
+    principal has given consent or for certain legitimate uses specified in the Act.
+    Automated decision-making must be fair and non-discriminatory.
+  metric: statistical_score
+  threshold: 0.80
+  operator: gte
+  jurisdiction: India
+
+india_dpdp.sec_8:
+  obligation: >
+    A data fiduciary shall, in relation to personal data processed by it, ensure
+    completeness, accuracy and consistency of personal data. AI outputs must not
+    systematically disadvantage individuals based on protected characteristics.
+  metric: causal_counterfactual_score
+  threshold: 0.75
+  operator: gte
+  jurisdiction: India

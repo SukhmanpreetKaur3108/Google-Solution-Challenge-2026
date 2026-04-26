@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-950 text-gray-100 font-sans antialiased;
+  }
+  * { @apply border-gray-800; }
+}
+
+@layer components {
+  .card {
+    @apply bg-gray-900 border border-gray-800 rounded-2xl p-6 shadow-xl;
+  }
+  .badge-fair    { @apply bg-green-900/40 text-green-400 border border-green-700 px-3 py-1 rounded-full text-xs font-semibold; }
+  .badge-review  { @apply bg-yellow-900/40 text-yellow-400 border border-yellow-700 px-3 py-1 rounded-full text-xs font-semibold; }
+  .badge-biased  { @apply bg-red-900/40 text-red-400 border border-red-700 px-3 py-1 rounded-full text-xs font-semibold; }
+  .btn-primary   { @apply bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-2.5 rounded-xl transition-all duration-200 disabled:opacity-50; }
+  .btn-secondary { @apply bg-gray-800 hover:bg-gray-700 text-gray-200 font-medium px-5 py-2 rounded-xl transition-all; }
+  .score-ring    { @apply inline-flex items-center justify-center rounded-full font-bold text-lg; }
+}
