@@ -319,7 +319,7 @@ Scan the QR code on any certificate to verify it in your browser — no server t
 
 ## Team
 
-| Names
+Members name:
 Sukhmanpreet Kaur 
 Aasmeet Kaur 
 
