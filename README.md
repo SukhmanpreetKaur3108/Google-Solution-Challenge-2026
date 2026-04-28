@@ -319,10 +319,7 @@ Scan the QR code on any certificate to verify it in your browser — no server t
 
 ## Team
 
-| Name | Role |
-|------|------|
-| [Team Member 1] | Backend, ML, Cloud |
-| [Team Member 2] | Frontend, Design, Demo |
+Names: Sukhmanpreet Kaur, Aasmeet Kaur 
 
 ---
 
